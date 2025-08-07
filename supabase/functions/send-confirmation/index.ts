@@ -42,7 +42,7 @@ const generatePersonalizedContent = async (name: string, industry: string) => {
     });
 
     const data = await response.json();
-    return data?.choices[1]?.message?.content;
+    return data?.choices[0]?.message?.content;
   } catch (error) {
     console.error('Error generating personalized content:', error);
     // Fallback content
@@ -75,13 +75,13 @@ const handler = async (req: Request): Promise<Response> => {
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #333; margin-bottom: 10px;">🚀 Welcome to the Innovation Revolution!</h1>
           </div>
-          
+
           <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px; color: white; margin-bottom: 30px;">
             <div style="font-size: 18px; line-height: 1.6;">
               ${personalizedContent.replace(/\n/g, '<br>')}
             </div>
           </div>
-          
+
           <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 25px;">
             <h3 style="color: #333; margin-top: 0;">What's Next?</h3>
             <ul style="color: #666; line-height: 1.6;">
@@ -91,7 +91,7 @@ const handler = async (req: Request): Promise<Response> => {
               <li>📈 <strong>Transform your approach</strong> to ${industry} challenges</li>
             </ul>
           </div>
-          
+
           <div style="text-align: center; padding: 20px 0; border-top: 1px solid #eee;">
             <p style="color: #666; margin: 0;">
               Ready to revolutionize ${industry}?<br>
